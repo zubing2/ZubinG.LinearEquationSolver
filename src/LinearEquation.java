@@ -27,7 +27,13 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept() {
-        return 0;
+        if ((slope() * x1) < 0) {
+            return (y1 - (slope() * x1));
+        } if ((slope() * x1) > 0) {
+            return (y1 + (slope() * x1));
+        } else {
+            return y1;
+        }
     }
 
 
@@ -66,7 +72,18 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
                subtraction!
      */
     public String equation() {
-        return null;
+        int rise = (y2 - y1);
+        int run = (x2 - x1);
+        if ((rise < 0) && (run < 0)) {
+
+        }
+        if (yIntercept() > 0) {
+            return ("y = " + rise + "/" + run + "x + " + yIntercept());
+        } if (yIntercept() < 0) {
+            return ("y = " + rise + "/" + run + "x " + yIntercept());
+        } else {
+            return ("y = " + rise + "/" + run + "x");
+        }
     }
 
 
