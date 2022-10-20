@@ -21,18 +21,18 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
 /* Calculates and returns distance between (x1, y1) and (x2, y2), rounded to
    the nearest hundredth */
     public double distance() {
-        return Math.sqrt((Math.pow((x2 - x1), 2)) + (Math.pow((y2 - y1), 2)));
+        return roundedToHundredth(Math.sqrt((Math.pow((x2 - x1), 2)) + (Math.pow((y2 - y1), 2))));
     }
 
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept() {
-        if ((slope() * x1) < 0) {
-            return (y1 - (slope() * x1));
-        } if ((slope() * x1) > 0) {
-            return (y1 + (slope() * x1));
+        if ((slope() * x1) > 0) {
+            return roundedToHundredth((y1 - (slope() * x1)));
+        } if ((slope() * x1) < 0) {
+            return roundedToHundredth((y1 + (slope() * x1)));
         } else {
-            return y1;
+            return roundedToHundredth(y1);
         }
     }
 
@@ -43,7 +43,7 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
     public double slope() {
         double part1 = (y2 - y1);
         double part2 = (x2 - x1);
-        return (part1 / part2);
+        return roundedToHundredth(part1 / part2);
     }
 
 
@@ -75,7 +75,8 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
         int rise = (y2 - y1);
         int run = (x2 - x1);
         if ((rise < 0) && (run < 0)) {
-
+            rise = Math.abs(rise);
+            run = Math.abs(run);
         }
         if (yIntercept() > 0) {
             return ("y = " + rise + "/" + run + "x + " + yIntercept());
@@ -106,7 +107,9 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
         HINT:  the Math.round method can help with this!
      */
     public double roundedToHundredth(double toRound) {
-        return 0;
+        double x = toRound;
+        double y = Math.round(x * 100.0) / 100.0;
+        return y;
     }
 
 
