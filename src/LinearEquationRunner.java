@@ -30,18 +30,22 @@ public class LinearEquationRunner {
         int x2 = Integer.parseInt(firstHalf2);
         int y2 = Integer.parseInt(secHalf2);
 
-        // Creation of the equation with each of the respective x and y values.
-        LinearEquation equation = new LinearEquation(x1, y1, x2, y2);
 
-        // Printing out all necessary information about the line given the previous point inputs.
-        System.out.println("");
-        System.out.println("----- Line info -----");
-        System.out.println(equation.lineInfo());
-        System.out.println();
-        System.out.print("Enter a value for x: ");
-        double xValue = scan.nextDouble();
-        System.out.println("Coordinate for x: " + equation.coordinateForX(xValue));
-
-
+        // If the x values are equal to each other the rest of the program won't run.
+        if (x1 == x2) {
+            System.out.println("The equation of your line is x = " + x1);
+            System.out.println("The inputted line is vertical, please try again.");
+        } else {
+            // Creation of the equation with each of the respective x and y values.
+            LinearEquation equation = new LinearEquation(x1, y1, x2, y2);
+            // Printing out all necessary information about the line given the previous point inputs.
+            System.out.println("");
+            System.out.println("----- Line info -----");
+            System.out.println(equation.lineInfo());
+            System.out.println();
+            System.out.print("Enter a value for x: ");
+            double xValue = scan.nextDouble();
+            System.out.println("Coordinate for x: " + equation.coordinateForX(xValue));
+        }
     }
 }
